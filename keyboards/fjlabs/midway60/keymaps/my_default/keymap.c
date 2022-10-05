@@ -19,10 +19,9 @@ enum layers {
     _LAYER1,
     _LAYER2,
     _LAYER3,
-    _LAYER4,
 };
 
-enum custom_keycodes {
+enum custon_keycodes {
     SCOPE = SAFE_RANGE,
     ARRIN,
     UPDIR,
@@ -51,62 +50,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return true;
 };
 
-// Hold TAB to send left ALT, Tap to send TAB
-#define ALT_TAB MT(MOD_LALT,KC_TAB)
-
-// Hold SPACE to switch to layer 1, Tap to send SPACE
-#define SPC_FN1 LT(2,KC_SPC)
-
-// Home row mods
-#define HOME_A LT(3,KC_A)
-#define HOME_S LALT_T(KC_S)
-#define HOME_D LSFT_T(KC_D)
-#define HOME_F LGUI_T(KC_F)
-#define HOME_J RGUI_T(KC_J)
-#define HOME_K RSFT_T(KC_K)
-#define HOME_L LALT_T(KC_L)
-#define HOME_SC LT(3,KC_SCLN)
-#define HOME_SL RCTL_T(KC_SLSH)
-#define HOME_Z LCTL_T(KC_Z)
-
-
-
-// Configure the global tapping term (default: 200ms)
-#define TAPPING_TERM 200
-
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat
-#define TAPPING_FORCE_HOLD
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LAYER0] = LAYOUT_all(
-        KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  DF(1),   KC_GRV,
-        ALT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
+        KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
+        MT(MOD_LALT,KC_TAB),  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
         KC_LGUI, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
-        KC_LSPO, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, TG(2),
-        KC_LCTL, KC_NO,   KC_LGUI,                            SPC_FN1,                            MO(3),   MO(3),   KC_NO,   MO(4)
+        KC_LSPO, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC, TG(1),
+        KC_LCTL, KC_NO,   KC_LGUI,                            LT(1,KC_SPC),                       MO(2),   MO(2),   KC_NO,   MO(3)
     ),
 
-    [_LAYER1] = LAYOUT_all(
-        KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  DF(0),   KC_GRV,
-        ALT_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
-        KC_LGUI, HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,    KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_SC, KC_QUOT,          KC_ENT,
-        KC_LSPO, KC_LSFT, HOME_Z,  KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  HOME_SL, KC_RSPC, KC_TRNS,
-        KC_LCTL, KC_NO,   KC_LGUI,                            SPC_FN1,                            KC_TRNS, KC_TRNS, KC_NO,   KC_TRNS
-    ),
-
-    [_LAYER2] = LAYOUT_all( // Navigation Layer
+    [_LAYER1] = LAYOUT_all( // Navigation Layer
         KC_NO,   C(KC_1), C(KC_2), KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
+        KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_MINS, KC_EQL,  KC_BSPC,
         KC_TRNS, KC_NO,   KC_NO,   KC_LBRC, KC_RBRC, KC_NO,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_QUOT, KC_NO,            KC_TRNS,
         KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
-    [_LAYER3] = LAYOUT_all( // Symbols Layer
+    [_LAYER2] = LAYOUT_all( // Symbols Layer
         KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_EXLM, KC_AMPR, KC_BSLS, KC_GRV,  KC_PERC, KC_RABK, KC_TRNS, KC_PMNS, KC_PLUS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_HASH, KC_AT,   KC_DLR,  KC_LCBR, KC_RCBR, KC_UNDS, KC_PEQL, ARRIN,   SCOPE,   UPDIR,   KC_TRNS, KC_NO,            KC_TRNS,
@@ -114,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
-    [_LAYER4] = LAYOUT_all( // F row and board management
+    [_LAYER3] = LAYOUT_all( // F row and board management
         KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS,KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QK_BOOT,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,
