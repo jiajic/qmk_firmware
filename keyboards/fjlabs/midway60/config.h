@@ -56,6 +56,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define LED_CAPS_LOCK_PIN C7
 
 /* Define less important options */
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define TAPPING_TERM_PER_KEY
+#define FORCE_NKRO
+#define COMBO_TERM 25
+#define COMBO_MUST_HOLD_MODS
+#define COMBO_HOLD_TERM 175
+
+
 
 /*
  * Force NKRO
