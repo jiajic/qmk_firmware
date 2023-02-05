@@ -28,6 +28,7 @@ enum custom_keycodes {
     SCOPE = SAFE_RANGE,
     ARRIN,
     UPDIR,
+    COLEQ,
 };
 
 // define combo names
@@ -41,7 +42,7 @@ enum combos {
     JL_LALT,
     JKL_ENTR,
     JSC_RCTL,
-    ER_TAB,
+//    ER_TAB,
     GH_CAPSWRD,
     UI_BKSP,
     // more here...
@@ -61,7 +62,7 @@ const uint16_t PROGMEM kl_combo[] = {KC_K, KC_L, COMBO_END}; // Mainly for scree
 const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END};
 const uint16_t PROGMEM jkl_combo[] = {KC_J, KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM jsc_combo[] = {KC_J, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
+//const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM gh_combo[] = {KC_G, KC_H, COMBO_END};
 const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
 // more here...
@@ -78,7 +79,7 @@ combo_t key_combos[] = {
     [JL_LALT] = COMBO(jl_combo, KC_LALT),
     [JKL_ENTR] = COMBO(jkl_combo, KC_ENT),
     [JSC_RCTL] = COMBO(jsc_combo, KC_RCTL),
-    [ER_TAB] = COMBO(er_combo, KC_TAB),
+//    [ER_TAB] = COMBO(er_combo, KC_TAB),
     [GH_CAPSWRD] = COMBO(gh_combo, CAPSWRD),
     [UI_BKSP] = COMBO(ui_combo, KC_BSPC),
     // more here...
@@ -102,6 +103,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case UPDIR: // Types ../
             if (record->event.pressed) {
                 SEND_STRING("../");
+            }
+            return false;
+        case COLEQ: // Types :=
+            if (record->event.pressed) {
+                SEND_STRING(":=");
             }
             return false;
     }
@@ -171,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_EXLM, KC_EXLM, KC_BSLS, KC_GRV,  KC_PERC, KC_LABK, KC_RABK, KC_PMNS, KC_PLUS, KC_HASH, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_HASH, KC_AT,   KC_DLR,  KC_LBRC, KC_RBRC, KC_UNDS, KC_PEQL, ARRIN,   SCOPE,   UPDIR,   KC_QUOT, KC_NO,            KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_AMPR, KC_PIPE, KC_LCBR, KC_RCBR, KC_TILD, KC_ASTR, KC_CIRC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_CAPS,
+        KC_TRNS, KC_TRNS, KC_AMPR, KC_PIPE, KC_LCBR, KC_RCBR, KC_TILD, KC_ASTR, KC_CIRC, COLEQ, KC_TRNS, KC_TRNS, KC_TRNS, KC_CAPS,
         KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
@@ -184,19 +190,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
-/*
+
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case HOME_G:
-        case HOME_H:
-            return TAPPING_TERM - 50;
+        case HOME_A:
+            return TAPPING_TERM - 20;
+        case HOME_SC:
+            return TAPPING_TERM - 90;
 //        case HOME_L:
 //            return TAPPING_TERM + 100;
         default:
-            return TAPPING_TERM + 50;
+            return TAPPING_TERM;
     }
 }
-*/
+
 
 
 bool caps_word_press_user(uint16_t keycode) {
