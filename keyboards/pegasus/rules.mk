@@ -17,3 +17,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes
+CAPS_WORD_ENABLE = yes      # Enable caps word by pressing R and L shift
+FORCE_NKRO = yes
+COMBO_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes
