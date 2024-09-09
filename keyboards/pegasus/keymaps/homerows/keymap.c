@@ -193,9 +193,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_LAYER2] = LAYOUT_default( // Symbols
-        KC_EXLM, KC_EXLM, KC_BSLS, KC_GRV,  KC_PERC, KC_LABK, KC_RABK, KC_MINS, KC_PLUS, KC_HASH, _______, _______,
-        KC_HASH, KC_AT,   KC_DLR,  KC_LBRC, KC_RBRC, KC_UNDS, KC_PEQL, ARRIN,   SCOPE,   UPDIR,   KC_QUOT, XXXXXXX,
-        _______, KC_AMPR, KC_PIPE, KC_LCBR, KC_RCBR, KC_TILD, KC_ASTR, KC_CIRC, COLEQ,   _______, _______, _______,
+        KC_TILD, KC_EXLM, KC_BSLS, KC_GRV,  KC_PERC, KC_LABK, KC_RABK, KC_MINS, KC_PLUS, KC_HASH, _______, _______,
+        KC_QUES, KC_AT,   KC_DLR,  KC_LBRC, KC_RBRC, KC_UNDS, KC_PEQL, ARRIN,   SCOPE,   UPDIR,   KC_QUOT, KC_DQUO,
+        KC_SLSH, KC_AMPR, KC_PIPE, KC_LCBR, KC_RCBR, KC_TILD, KC_ASTR, KC_CIRC, COLEQ,   _______, _______, _______,
         _______, _______,                            _______,                                     _______, _______
     ),
 
